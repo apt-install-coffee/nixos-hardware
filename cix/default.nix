@@ -19,6 +19,8 @@ in
   config = lib.mkIf cfg.enable {
     boot = {
       kernelParams = [
+        "console=tty1"
+        "console=ttyAMA0,115200n8"
         "console=ttyAMA2,115200n8"
         "acpi=force"
         "kasan=off"
