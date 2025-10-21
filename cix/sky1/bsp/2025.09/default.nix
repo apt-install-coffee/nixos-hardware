@@ -23,7 +23,7 @@ in
       ];
     };
 
-    hardware.firmware = with pkgs[
+    hardware.firmware = with pkgs; [
       cix_gpu_firmware
       cix_vpu_firmware
     ];
