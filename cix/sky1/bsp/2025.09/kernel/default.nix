@@ -8,8 +8,8 @@
 
 let
   kver = "6.6.89";
-  rev = "915a940499a619f362d7e4b2203c105313941f88";
-  hash = "sha256-d3nVowJlsB26FwRH/lA2b4U2u5orV3SwEvk3xVArrgc=";
+  rev = "7a822ac9aea389869a28f259b507ceaf5fa4f527";
+  hash = "sha256-ySM+XHPwcPweszvba7GshBlrWlpds3y5InMw2HTHhvg=";
 
   args' =
     {
@@ -41,16 +41,11 @@ let
           patch = ./0004-DPTSW-17177-pwm-sky1-remove-pwm-clock-auto-enable-fe.patch;
         }
         {
-          name = "fix-fwnode_regulator";
-          patch = ./fix-fwnode_regulator.patch;
-        }
-        {
-          name = "fix-cix-ec";
-          patch = ./fix-cix-ec.patch;
-        }
-        {
-          name = "incompatible-pointer";
-          patch = ./incompatible-pointer.patch;
+          name = "0004-DPTSW-17177-pwm-sky1-remove-pwm-clock-auto-enable-fe";
+          patch = fetchurl {
+            url = "https://gitlab.com/cix-linux/cix_opensource/linux/-/merge_requests/1.patch";
+            hash = "sha256-KhYsffNvqdOCaJi8oGP915HQ4za8RvEXlRseFkwhhWE=";
+          };
         }
       ];
 

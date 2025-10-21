@@ -19,5 +19,6 @@ final: _prev: {
 
   linuxPackages_cix = final.linuxPackages_6_6_89;
 
+  cix_gpu_firmware = final.callPackage ./firmwares/cix_gpu_firmware {};
   cix_vpu_firmware = final.callPackage ./firmwares/cix_vpu_firmware {};
 }
