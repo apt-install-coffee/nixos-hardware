@@ -9,6 +9,4 @@ final: _prev: {
   };
   linuxPackages_6_6_10 = final.linuxKernel.packages.linux_6_6_10;
   linux_6_6_10 = final.linuxKernel.kernels.linux_6_6_10;
-
-  linuxPackages_cix = final.linuxPackages_6_6_10;
 }
