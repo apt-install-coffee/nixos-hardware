@@ -15,10 +15,15 @@ in
       type = lib.types.enum [
         "2025.04"
         "2025.09"
+        "none"
       ];
       default = "2025.09";
       description = ''
         Select the BSP release that will be used on the system.
+
+        A special `none` option is available to disable system configuration
+        associated with a specific BSP release. Only packages are added via the
+        overlay to allow manual configuration.
       '';
     };
   };
@@ -26,6 +31,7 @@ in
   imports = [
     ./bsp/2025.04
     ./bsp/2025.09
+    ./bsp/none
   ];
 
   config = lib.mkIf cfg.enable {
