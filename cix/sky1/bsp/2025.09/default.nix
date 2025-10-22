@@ -21,6 +21,9 @@ in
         cix_npu_driver
         cix_vpu_driver
       ];
+      extraModprobeConfig = ''
+        options linlon-dp enable_render=0 # conflict with Panthor
+      '';
     };
 
     hardware.firmware = with pkgs; [
