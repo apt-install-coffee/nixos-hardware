@@ -47,6 +47,10 @@ let
             hash = "sha256-KhYsffNvqdOCaJi8oGP915HQ4za8RvEXlRseFkwhhWE=";
           };
         }
+        {
+          name = "logmem_add";
+          patch = ./logmem_add.patch;
+        }
       ];
 
       defconfig = "defconfig cix.config";

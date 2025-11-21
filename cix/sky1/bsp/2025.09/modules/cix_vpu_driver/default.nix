@@ -19,6 +19,10 @@ stdenv.mkDerivation (finalAttrs: {
 
   nativeBuildInputs = kernel.moduleBuildDependencies;
 
+  patches = [
+    ./chromium.patch
+  ];
+
   makeFlags = kernelModuleMakeFlags ++ [
     "-C"
     "driver"

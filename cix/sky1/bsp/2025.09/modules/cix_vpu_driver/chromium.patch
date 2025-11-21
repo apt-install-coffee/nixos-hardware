@@ -1,0 +1,36 @@
+diff --git a/driver/if/mvx_session.c b/driver/if/mvx_session.c
+index 8cc41a8..51ed9b4 100755
+--- a/driver/if/mvx_session.c
++++ b/driver/if/mvx_session.c
+@@ -130,10 +130,11 @@ static struct mvx_session_format_map mvx_compressed_fmts[] = {
+       .flags =          V4L2_FMT_FLAG_COMPRESSED,
+       .pixelformat =    V4L2_PIX_FMT_AV1,
+       .description =    "AV1" },
+-    { .format =         MVX_FORMAT_JPEG,
+-      .flags =          V4L2_FMT_FLAG_COMPRESSED,
+-      .pixelformat =    V4L2_PIX_FMT_JPEG,
+-      .description =    "JPEG" },
++    // https://discord.com/channels/855634073376260096/1319155498263773214/1440515223135064086
++    // { .format =         MVX_FORMAT_JPEG,
++    //   .flags =          V4L2_FMT_FLAG_COMPRESSED,
++    //   .pixelformat =    V4L2_PIX_FMT_JPEG,
++    //   .description =    "JPEG" },
+     { .format =         MVX_FORMAT_JPEG,
+       .flags =          V4L2_FMT_FLAG_COMPRESSED,
+       .pixelformat =    V4L2_PIX_FMT_MJPEG,
+diff --git a/driver/if/v4l2/mvx_v4l2_vidioc.c b/driver/if/v4l2/mvx_v4l2_vidioc.c
+index a33fbef..751e3f8 100755
+--- a/driver/if/v4l2/mvx_v4l2_vidioc.c
++++ b/driver/if/v4l2/mvx_v4l2_vidioc.c
+@@ -1518,6 +1518,11 @@ int mvx_v4l2_vidioc_streamoff(struct file *file,
+ 
+     MVX_SESSION_INFO(&vsession->session, "v4l2: Stream off. dir=%u.", dir);
+ 
++    // https://github.com/armbian/linux-cix/pull/4
++    if (vsession->port[dir].vb2_queue.streaming == 0) {
++        return 0;
++    }
++
+     ret = mutex_lock_interruptible(&vsession->mutex);
+     if (ret != 0)
+         return ret;
