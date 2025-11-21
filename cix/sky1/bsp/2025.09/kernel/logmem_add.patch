@@ -1,0 +1,27 @@
+diff --git a/drivers/soc/cix/cix_dst/blackbox/platform_ap/rdr_ap_pstore.c b/drivers/soc/cix/cix_dst/blackbox/platform_ap/rdr_ap_pstore.c
+index 42fcdc4227c87..13b154dba05fa 100644
+--- a/drivers/soc/cix/cix_dst/blackbox/platform_ap/rdr_ap_pstore.c
++++ b/drivers/soc/cix/cix_dst/blackbox/platform_ap/rdr_ap_pstore.c
+@@ -77,9 +77,13 @@ void logmem_add(enum pstore_type_id id, void *buf, u32 size)
+ 
+ 	if (IS_ERR_OR_NULL(g_logmem))
+ 		return;
++	printk("id = %i\n", id);
++	printk("buf = %lx\n", buf);
++	printk("size = %u\n", size);
+ 
+ 	cp_size = min(size, g_logmem[id].size - offset);
+ 	lhead = g_logmem[id].vaddr;
++	printk("lhead = %lx\n", lhead);
+ 
+ 	if (lhead->flag == IS_PSTORE)
+ 		return;
+@@ -87,6 +91,8 @@ void logmem_add(enum pstore_type_id id, void *buf, u32 size)
+ 	lhead->type = id;
+ 	lhead->size = cp_size;
+ 	cp_addr = buf + size - cp_size;
++	printk("cp_addr = %lx\n", cp_addr);
++
+ 	if (g_logmem[id].size) {
+ 		BB_PN("add %s log ok, orign size: %d, cp_size: %d\n",
+ 		      pstore_type_to_name(id), size, cp_size);
