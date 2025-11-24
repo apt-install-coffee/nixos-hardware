@@ -20,6 +20,7 @@ stdenv.mkDerivation (finalAttrs: {
   nativeBuildInputs = kernel.moduleBuildDependencies;
 
   patches = [
+    # based on https://github.com/armbian/linux-cix/pull/5
     ./chromium.patch
   ];
 
