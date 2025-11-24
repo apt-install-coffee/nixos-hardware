@@ -2,7 +2,7 @@ diff --git a/driver/if/mvx_session.c b/driver/if/mvx_session.c
 index 8cc41a8..51ed9b4 100755
 --- a/driver/if/mvx_session.c
 +++ b/driver/if/mvx_session.c
-@@ -130,10 +130,11 @@ static struct mvx_session_format_map mvx_compressed_fmts[] = {
+@@ -130,10 +130,12 @@ static struct mvx_session_format_map mvx_compressed_fmts[] = {
        .flags =          V4L2_FMT_FLAG_COMPRESSED,
        .pixelformat =    V4L2_PIX_FMT_AV1,
        .description =    "AV1" },
@@ -10,6 +10,7 @@ index 8cc41a8..51ed9b4 100755
 -      .flags =          V4L2_FMT_FLAG_COMPRESSED,
 -      .pixelformat =    V4L2_PIX_FMT_JPEG,
 -      .description =    "JPEG" },
++    // Author: amazingfate
 +    // https://discord.com/channels/855634073376260096/1319155498263773214/1440515223135064086
 +    // { .format =         MVX_FORMAT_JPEG,
 +    //   .flags =          V4L2_FMT_FLAG_COMPRESSED,
@@ -22,10 +23,11 @@ diff --git a/driver/if/v4l2/mvx_v4l2_vidioc.c b/driver/if/v4l2/mvx_v4l2_vidioc.c
 index a33fbef..751e3f8 100755
 --- a/driver/if/v4l2/mvx_v4l2_vidioc.c
 +++ b/driver/if/v4l2/mvx_v4l2_vidioc.c
-@@ -1518,6 +1518,11 @@ int mvx_v4l2_vidioc_streamoff(struct file *file,
+@@ -1518,6 +1518,12 @@ int mvx_v4l2_vidioc_streamoff(struct file *file,
  
      MVX_SESSION_INFO(&vsession->session, "v4l2: Stream off. dir=%u.", dir);
  
++    // Author: amazingfate
 +    // https://github.com/armbian/linux-cix/pull/4
 +    if (vsession->port[dir].vb2_queue.streaming == 0) {
 +        return 0;
@@ -34,3 +36,31 @@ index a33fbef..751e3f8 100755
      ret = mutex_lock_interruptible(&vsession->mutex);
      if (ret != 0)
          return ret;
+diff --git a/driver/if/v4l2/mvx_v4l2_fops.c b/driver/if/v4l2/mvx_v4l2_fops.c
+index 2c31a15..5f2d63f 100755
+--- a/driver/if/v4l2/mvx_v4l2_fops.c
++++ b/driver/if/v4l2/mvx_v4l2_fops.c
+@@ -182,10 +182,20 @@ unsigned int mvx_v4l2_poll(struct file *file,
+         revents |= EPOLLPRI;
+ 
+     /* POLLPRI events are handled by Vb2 */
++    // Author: amazingfate
++    // https://discord.com/channels/855634073376260096/1319155498263773214/1442048682718396427
+-    if (vb2_is_streaming(&vsession->port[MVX_DIR_INPUT].vb2_queue) &&
+-        (events & EPOLLOUT))
+-        revents |= vb2_poll(&vsession->port[MVX_DIR_INPUT].vb2_queue,
++    if (vb2_is_streaming(&vsession->port[MVX_DIR_INPUT].vb2_queue))
++    {
++        unsigned int input_revents = vb2_poll(&vsession->port[MVX_DIR_INPUT].vb2_queue,
+                     file, wait);
++        if (events & EPOLLOUT)
++            revents |= input_revents;
++
++        MVX_SESSION_WARN(&vsession->session,
++                    "v4l2: Poll with EPOLLOUT/auto. events=0x%lx, revents=0x%x, nevents=%d.",
++                    events, revents, v4l2_event_pending(&vsession->fh));
++    }
++
+     if (vb2_is_streaming(&vsession->port[MVX_DIR_OUTPUT].vb2_queue) &&
+         (events & (EPOLLIN | EPOLLPRI)))
+         revents |= vb2_poll(&vsession->port[MVX_DIR_OUTPUT].vb2_queue,
