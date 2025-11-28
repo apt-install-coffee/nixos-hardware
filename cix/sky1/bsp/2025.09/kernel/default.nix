@@ -49,7 +49,7 @@ let
           name = "0004-DPTSW-17177-pwm-sky1-remove-pwm-clock-auto-enable-fe";
           patch = fetchurl {
             url = "https://github.com/radxa-pkg/linux-sky1/raw/99dae262da2185f18503720328b42c4c244a1a0d/debian/patches/cix/wip/0004-DPTSW-17177-pwm-sky1-remove-pwm-clock-auto-enable-fe.patch";
-            hash = "";
+            hash = "sha256-kmOy+lsQosv176rKZ35qvdhsMk7Oe9k1kn7ZdvyN4c4=";
           };
         }
         {
