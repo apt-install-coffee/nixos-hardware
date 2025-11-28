@@ -1,0 +1,13 @@
+diff --git a/include/linux/soc/cix/rdr_pub.h b/include/linux/soc/cix/rdr_pub.h
+index cd26c12813f81..ab37cff5633d2 100755
+--- a/include/linux/soc/cix/rdr_pub.h
++++ b/include/linux/soc/cix/rdr_pub.h
+@@ -455,7 +455,7 @@ static inline void rdr_system_error(u32 modid, u32 arg1, u32 arg2)
+ }
+ static inline unsigned int bbox_check_edition(void)
+ {
+-	return EDITION_USER;
++	return 0;
+ }
+ static inline int rdr_wait_partition(const char *path, int timeouts, int mode)
+ {

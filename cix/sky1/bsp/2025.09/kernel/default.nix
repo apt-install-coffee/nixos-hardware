@@ -8,8 +8,8 @@
 
 let
   kver = "6.6.89";
-  rev = "7a822ac9aea389869a28f259b507ceaf5fa4f527";
-  hash = "sha256-ySM+XHPwcPweszvba7GshBlrWlpds3y5InMw2HTHhvg=";
+  rev = "4f8ec1ee12efa6e5ac0cb190a7bc5e34171d5f5c";
+  hash = "";
 
   args' =
     {
@@ -26,26 +26,42 @@ let
       kernelPatches = [
         {
           name = "0001-DPTSW-16669-0-clocksource-timer-sky1-gpt-remove-rese";
-          patch = ./0001-DPTSW-16669-0-clocksource-timer-sky1-gpt-remove-rese.patch;
+          patch = fetchurl {
+            url = "https://github.com/radxa-pkg/linux-sky1/raw/99dae262da2185f18503720328b42c4c244a1a0d/debian/patches/cix/wip/0001-DPTSW-16669-0-clocksource-timer-sky1-gpt-remove-rese.patch";
+            hash = "";
+          };
         }
         {
           name = "0002-DPTSW-16669-1-pwm-remove-reset-operation";
-          patch = ./0002-DPTSW-16669-1-pwm-remove-reset-operation.patch;
+          patch = fetchurl {
+            url = "https://github.com/radxa-pkg/linux-sky1/raw/99dae262da2185f18503720328b42c4c244a1a0d/debian/patches/cix/wip/0002-DPTSW-16669-1-pwm-remove-reset-operation.patch";
+            hash = "";
+          };
         }
         {
           name = "0003-DPTSW-16669-2-arch-arm64-dts-cix-disable-uart1";
-          patch = ./0003-DPTSW-16669-2-arch-arm64-dts-cix-disable-uart1.patch;
-        }
-        {
-          name = "0004-DPTSW-17177-pwm-sky1-remove-pwm-clock-auto-enable-fe";
-          patch = ./0004-DPTSW-17177-pwm-sky1-remove-pwm-clock-auto-enable-fe.patch;
+          patch = fetchurl {
+            url = "https://github.com/radxa-pkg/linux-sky1/raw/99dae262da2185f18503720328b42c4c244a1a0d/debian/patches/cix/wip/0003-DPTSW-16669-2-arch-arm64-dts-cix-disable-uart1.patch";
+            hash = "";
+          };
         }
         {
           name = "0004-DPTSW-17177-pwm-sky1-remove-pwm-clock-auto-enable-fe";
           patch = fetchurl {
+            url = "https://github.com/radxa-pkg/linux-sky1/raw/99dae262da2185f18503720328b42c4c244a1a0d/debian/patches/cix/wip/0004-DPTSW-17177-pwm-sky1-remove-pwm-clock-auto-enable-fe.patch";
+            hash = "";
+          };
+        }
+        {
+          name = "drm/panthor: Add ACPI support";
+          patch = fetchurl {
             url = "https://gitlab.com/cix-linux/cix_opensource/linux/-/merge_requests/1.patch";
             hash = "sha256-KhYsffNvqdOCaJi8oGP915HQ4za8RvEXlRseFkwhhWE=";
           };
+        }
+        {
+          name = "rdr_pub";
+          patch = ./rdr_pub.patch;
         }
       ];
 
