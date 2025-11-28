@@ -9,7 +9,7 @@
 let
   kver = "6.6.89";
   rev = "4f8ec1ee12efa6e5ac0cb190a7bc5e34171d5f5c";
-  hash = "";
+  hash = "sha256-oau9t6wYSCMIBFljF0WKeIf5DHtAKlD7ZWAhVRP12kk=";
 
   args' =
     {
