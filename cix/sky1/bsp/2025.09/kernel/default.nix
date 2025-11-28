@@ -28,7 +28,7 @@ let
           name = "0001-DPTSW-16669-0-clocksource-timer-sky1-gpt-remove-rese";
           patch = fetchurl {
             url = "https://github.com/radxa-pkg/linux-sky1/raw/99dae262da2185f18503720328b42c4c244a1a0d/debian/patches/cix/wip/0001-DPTSW-16669-0-clocksource-timer-sky1-gpt-remove-rese.patch";
-            hash = "";
+            hash = "sha256-tUNGipYogpTsX0Sc290avZAtZGCyjVz4MhyNiOzY51c=";
           };
         }
         {
