@@ -59,10 +59,6 @@ let
             hash = "sha256-KhYsffNvqdOCaJi8oGP915HQ4za8RvEXlRseFkwhhWE=";
           };
         }
-        {
-          name = "rdr_pub";
-          patch = ./rdr_pub.patch;
-        }
       ];
 
       defconfig = "defconfig cix.config";
