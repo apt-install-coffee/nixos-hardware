@@ -35,7 +35,7 @@ let
           name = "0002-DPTSW-16669-1-pwm-remove-reset-operation";
           patch = fetchurl {
             url = "https://github.com/radxa-pkg/linux-sky1/raw/99dae262da2185f18503720328b42c4c244a1a0d/debian/patches/cix/wip/0002-DPTSW-16669-1-pwm-remove-reset-operation.patch";
-            hash = "";
+            hash = "sha256-Gk+Gjz6ZcixN3mrxnEJIbp0zBHbc7C3zDzSOyLBTHmI=";
           };
         }
         {
