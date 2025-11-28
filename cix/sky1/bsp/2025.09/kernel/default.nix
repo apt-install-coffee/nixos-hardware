@@ -47,10 +47,6 @@ let
             hash = "sha256-KhYsffNvqdOCaJi8oGP915HQ4za8RvEXlRseFkwhhWE=";
           };
         }
-        {
-          name = "logmem_add";
-          patch = ./logmem_add.patch;
-        }
       ];
 
       defconfig = "defconfig cix.config";
@@ -64,6 +60,8 @@ let
         TYPEC_DP_ALTMODE = lib.mkForce no;
         # Non existing INV_ICM42600_REG_DRIVE_CONFIG constant
         INV_ICM42600_I2C = lib.mkForce no;
+        # NULL dereference panic on reboot
+        CIX_DST = lib.mkForce no;
       };
 
       isLTS = true;
