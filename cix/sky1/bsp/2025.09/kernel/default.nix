@@ -42,7 +42,7 @@ let
           name = "0003-DPTSW-16669-2-arch-arm64-dts-cix-disable-uart1";
           patch = fetchurl {
             url = "https://github.com/radxa-pkg/linux-sky1/raw/99dae262da2185f18503720328b42c4c244a1a0d/debian/patches/cix/wip/0003-DPTSW-16669-2-arch-arm64-dts-cix-disable-uart1.patch";
-            hash = "";
+            hash = "sha256-ctGReQu8RonZIp5v7c1LnIGDBGXPXXFJiDKV+DcUjhs=";
           };
         }
         {
