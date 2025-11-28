@@ -22,7 +22,7 @@ in
       kernelPackages = lib.mkOverride 900 pkgs.linuxPackages_cix;
       extraModulePackages = with config.boot.kernelPackages; [
         # cix_gpu_kernel
-        cix_isp_driver
+        # cix_isp_driver
         cix_npu_driver
         cix_vpu_driver
       ];
