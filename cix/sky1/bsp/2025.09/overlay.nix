@@ -4,7 +4,7 @@ final: _prev: {
       linux_6_6_89 = final.callPackage ./kernel {};
     };
     vanillaPackages = _prev.linuxKernel.vanillaPackages // {
-      linux_6_6_89 = final.recurseIntoAttrs ((final.linuxKernel.packagesFor final.linuxKernel.kernels.linux_6_6_89).extend (
+      linux_6_6_89 = final.lib.recurseIntoAttrs ((final.linuxKernel.packagesFor final.linuxKernel.kernels.linux_6_6_89).extend (
         _: _: {
           cix_gpu_kernel = final.linuxKernel.packages.linux_6_6_89.callPackage ./modules/cix_gpu_kernel { };
           cix_isp_driver = final.linuxKernel.packages.linux_6_6_89.callPackage ./modules/cix_isp_driver { };
