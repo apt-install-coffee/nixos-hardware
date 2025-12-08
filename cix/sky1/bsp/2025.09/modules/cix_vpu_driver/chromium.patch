@@ -79,10 +79,10 @@ index a33fbef380a2..d2d4f1820abe 100755
          (port->width == 0 || port->height == 0))
          *buf_cnt = 1;
  
-+    / * Chromium requests 2 bufs for OUTPUT queue when decoding VP8. VP9
++     /* Chromium requests 2 bufs for OUTPUT queue when decoding VP8. VP9
 +      * and AV1, but this is not enough for decoding. So we set a minimal
 +      * buf count 8 here.
-+      * /
++      */
 +    if (vport->dir == MVX_DIR_INPUT &&
 +        !mvx_is_frame(port->format) &&
 +        *buf_cnt < 8)
