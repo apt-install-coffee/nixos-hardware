@@ -16,6 +16,7 @@ in
         "2025.04"
         "2025.09"
         "none"
+        "sky1-linux"
       ];
       default = "2025.09";
       description = ''
@@ -32,6 +33,7 @@ in
     ./bsp/2025.04
     ./bsp/2025.09
     ./bsp/none
+    ./bsp/sky1-linux
   ];
 
   config = lib.mkIf cfg.enable {
