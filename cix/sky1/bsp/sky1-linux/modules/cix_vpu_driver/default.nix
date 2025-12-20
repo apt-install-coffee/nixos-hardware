@@ -8,25 +8,20 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "cix_vpu_driver";
-  version = "1.0.0";
+  version = "1.0.0-2-unstable-20251218";
 
   src = fetchFromGitHub {
     owner = "Sky1-Linux";
     repo = "sky1-drivers-dkms";
-    tag = "v1.0.0";
-    hash = "";
+    rev = "62fadd6cbec8c72872f5aebeab7448e455ded40d";
+    hash = "sha256-5S0vJ9I4JS5I3VF+QQCpR6jCOLn0fCGRqlIlYJCHevs=";
   };
 
   nativeBuildInputs = kernel.moduleBuildDependencies;
 
-  patches = [
-    # based on https://github.com/armbian/linux-cix/pull/5
-    ./chromium.patch
-  ];
-
   makeFlags = kernelModuleMakeFlags ++ [
     "-C"
-    "driver"
+    "${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
     "KDIR=${kernel.dev}/lib/modules/${kernel.modDirVersion}/build"
     "M=$(PWD)/vpu/src"
   ];

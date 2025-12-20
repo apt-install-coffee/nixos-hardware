@@ -19,13 +19,13 @@ let
   sky1Patches = fetchFromGitHub {
     owner = "Sky1-Linux";
     repo = "linux-sky1";
-    tag = "v${kver}-1";
-    hash = "sha256-u4UM23+mFJXc9GmooxDzcXEUFOG2XxFTrUEUzaPkjjk=";
+    rev = "870e5f4344a4872dc0e232d7e068df36b99e31b9";
+    hash = "sha256-dl/gDXF7TuAxW+hjw+yOv5vSAsjTNHZAvp2Dwn5GwzY=";
   };
 
   args' =
     {
-      version = "${kver}";
+      version = "${kver}-sky1.5";
       pname = "linux-sky1";
 
       src = fetchFromGitHub {
