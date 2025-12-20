@@ -25,7 +25,7 @@ let
 
   args' =
     {
-      version = "${kver}-sky1.5";
+      version = "${kver}";
       pname = "linux-sky1";
 
       src = fetchFromGitHub {
