@@ -12,7 +12,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     owner = "Sky1-Linux";
     repo = "sky1-firmware";
     tag = "v1.1.0";
-    hash = "";
+    hash = "sha256-S5FA2cTSRPw+kc85PJnLtnEGnbF7FCJRav6Zilv4W+M=";
   };
 
   installPhase = ''
