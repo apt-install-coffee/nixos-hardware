@@ -8,13 +8,13 @@
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "cix_npu_driver";
-  version = "1.0.0";
+  version = "1.0.0-2-unstable-20251218";
 
   src = fetchFromGitHub {
     owner = "Sky1-Linux";
     repo = "sky1-drivers-dkms";
-    tag = "v1.0.0";
-    hash = "";
+    rev = "62fadd6cbec8c72872f5aebeab7448e455ded40d";
+    hash = "sha256-5S0vJ9I4JS5I3VF+QQCpR6jCOLn0fCGRqlIlYJCHevs=";
   };
 
   nativeBuildInputs = kernel.moduleBuildDependencies;
