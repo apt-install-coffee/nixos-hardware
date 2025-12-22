@@ -12,7 +12,7 @@ in
     nixpkgs.overlays = [
       (import ./overlay.nix)
       (final: prev: {
-        linuxPackages_cix = final.linuxPackages_6_18_1;
+        linuxPackages_cix = final.linuxPackages_6_18_2;
       })
     ];
 

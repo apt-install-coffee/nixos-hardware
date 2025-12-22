@@ -7,7 +7,7 @@
 }@args:
 
 let
-  kver = "6.18.1";
+  kver = "6.18.2";
 
   kPatch = (f: {
     name = "${f}";
@@ -19,8 +19,8 @@ let
   sky1Patches = fetchFromGitHub {
     owner = "Sky1-Linux";
     repo = "linux-sky1";
-    rev = "870e5f4344a4872dc0e232d7e068df36b99e31b9";
-    hash = "sha256-dl/gDXF7TuAxW+hjw+yOv5vSAsjTNHZAvp2Dwn5GwzY=";
+    rev = "988766097769c17b16a62742fb9537a7b3a983c7";
+    hash = "sha256-SXp2FXWYl2hEDOZ6bswaALqQBLWQVkT+gMbTpkULAx0=";
   };
 
   args' =
@@ -32,12 +32,12 @@ let
         owner = "gregkh";
         repo = "linux";
         tag = "v${kver}";
-        hash = "sha256-+8MBtrBKR78W5ShwUIIgCrw2P+lLMkLqoIkE0bIfn6M=";
+        hash = "sha256-cxRuaF1JFm1BWUTDsT55p8aFgp0TfCT6TbGHpObwEw8=";
       };
 
-      kernelPatches = patchList (lib.filesystem.listFilesRecursive "${sky1Patches}/debian/patches");
+      kernelPatches = patchList (lib.filesystem.listFilesRecursive "${sky1Patches}/patches");
 
-      configfile = "${sky1Patches}/debian/config/arm64/config";
+      configfile = "${sky1Patches}/config/config.sky1";
 
       isLTS = true;
 
