@@ -36,6 +36,9 @@ let
       };
 
       kernelPatches = patchList (lib.filesystem.listFilesRecursive "${sky1Patches}/patches");
+      structuredExtraConfig = {
+        RUST_FW_LOADER_ABSTRACTIONS = lib.kernel.yes;
+      };
 
       configfile = "${sky1Patches}/config/config.sky1";
 
