@@ -12,16 +12,12 @@ in
     nixpkgs.overlays = [
       (import ./overlay.nix)
       (final: prev: {
-        linuxPackages_cix = final.linuxPackages_6_18_2;
+        linuxPackages_cix = final.linuxPackages_6_19_4;
       })
     ];
 
     boot = {
       kernelPackages = lib.mkOverride 900 pkgs.linuxPackages_cix;
-      extraModulePackages = with config.boot.kernelPackages; [
-        # cix_npu_driver
-        cix_vpu_driver
-      ];
       extraModprobeConfig = ''
         options linlon-dp enable_render=0 # conflict with Panthor
       '';
