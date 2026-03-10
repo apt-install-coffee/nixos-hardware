@@ -1,51 +1,51 @@
 {
   lib,
-  fetchpatch2,
   fetchFromGitHub,
   buildLinux,
   ...
 }@args:
 
 let
-  kver = "6.18.2";
+  kver = "6.19.4";
 
-  kPatch = (f: {
-    name = "${f}";
-    patch = f;
-  });
+  kPatch = (
+    f: {
+      name = "${f}";
+      patch = f;
+    }
+  );
 
   patchList = (p: lib.filter (f: lib.hasSuffix ".patch" f.name) (lib.map kPatch p));
 
   sky1Patches = fetchFromGitHub {
     owner = "Sky1-Linux";
     repo = "linux-sky1";
-    rev = "988766097769c17b16a62742fb9537a7b3a983c7";
-    hash = "sha256-SXp2FXWYl2hEDOZ6bswaALqQBLWQVkT+gMbTpkULAx0=";
+    rev = "57e018a398248d7e5e4d798610df79a557c0629f";
+    hash = "sha256-cPQdu9pTNsn3gAcX5kr8VxxLMorD8FQoDFu7t63Zo2A=";
   };
 
-  args' =
-    {
-      version = "${kver}";
-      pname = "linux-sky1";
+  args' = {
+    version = "${kver}";
+    pname = "linux-sky1";
 
-      src = fetchFromGitHub {
-        owner = "gregkh";
-        repo = "linux";
-        tag = "v${kver}";
-        hash = "sha256-cxRuaF1JFm1BWUTDsT55p8aFgp0TfCT6TbGHpObwEw8=";
-      };
+    src = fetchFromGitHub {
+      owner = "gregkh";
+      repo = "linux";
+      tag = "v${kver}";
+      hash = "sha256-8Z3qxIUJAme3vY8KTmgZ5fZkqHytW6HVTx6pqGJsmRo=";
+    };
 
-      kernelPatches = patchList (lib.filesystem.listFilesRecursive "${sky1Patches}/patches");
-      structuredExtraConfig = {
-        RUST_FW_LOADER_ABSTRACTIONS = lib.kernel.yes;
-      };
+    kernelPatches = patchList (lib.filesystem.listFilesRecursive "${sky1Patches}/patches-latest");
+    structuredExtraConfig = {
+      RUST_FW_LOADER_ABSTRACTIONS = lib.kernel.yes;
+    };
 
-      configfile = "${sky1Patches}/config/config.sky1";
+    configfile = "${sky1Patches}/config/config.sky1-latest";
 
-      isLTS = true;
+    isLTS = false;
 
-      ignoreConfigErrors = true;
-    }
-    // (args.argsOverride or { });
+    ignoreConfigErrors = true;
+  }
+  // (args.argsOverride or { });
 in
 buildLinux args'
