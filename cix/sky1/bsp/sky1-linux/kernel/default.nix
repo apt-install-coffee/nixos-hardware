@@ -38,6 +38,7 @@ let
     kernelPatches = patchList (lib.filesystem.listFilesRecursive "${sky1Patches}/patches-latest");
     structuredExtraConfig = {
       RUST_FW_LOADER_ABSTRACTIONS = lib.kernel.yes;
+      CIX_CPU_IPA = lib.kernel.yes;
     };
 
     configfile = "${sky1Patches}/config/config.sky1-latest";
