@@ -43,6 +43,7 @@ let
       configfile = "${sky1Patches}/config/config.sky1";
 
       isLTS = true;
+      buildDTBs = true;
 
       ignoreConfigErrors = true;
     }
