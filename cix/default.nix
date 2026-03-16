@@ -19,7 +19,6 @@ in
   config = lib.mkIf cfg.enable {
     boot = {
       kernelParams = [
-        "acpi=force"
         "kasan=off"
       ];
     };
