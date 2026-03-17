@@ -74,6 +74,8 @@ let
       VFIO = yes;
       GRACE_PERIOD = yes;
       IOMMUFD = yes;
+      SCSI_MPT3SAS = yes;
+      USB_CDNSP_PCI = yes;
     };
 
     configfile = "${sky1Patches}/config/config.sky1-latest";
