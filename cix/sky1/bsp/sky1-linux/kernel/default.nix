@@ -73,6 +73,7 @@ let
       USB_CDNS3 = yes;
       VFIO = yes;
       GRACE_PERIOD = yes;
+      IOMMUFD = yes;
     };
 
     configfile = "${sky1Patches}/config/config.sky1-latest";
