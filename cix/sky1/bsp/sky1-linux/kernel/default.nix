@@ -61,7 +61,8 @@ let
       DMABUF_HEAPS_DSP = yes;
       DMABUF_HEAPS_SYSTEM = yes;
       DMABUF_HEAPS = yes;
-
+      NVME_CORE = yes;
+      BLK_DEV_NVME = yes;
       TYPEC = yes;
     };
 
