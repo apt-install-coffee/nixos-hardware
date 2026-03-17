@@ -65,6 +65,26 @@ let
       BLK_DEV_NVME = yes;
       TYPEC = yes;
       GPIO_CADENCE = yes;
+  APPLE_PMGR_PWRSTATE = yes;
+  BIG_KEYS = yes;
+  BOOTPARAM_HARDLOCKUP_PANIC = yes;
+  CC_CAN_LINK = yes;
+  DEBUG_INFO_REDUCED = yes;
+  DEFAULT_SECURITY_DAC = yes;
+  EXT4_USE_FOR_EXT2 = yes;
+  IP_PNP_BOOTP = yes;
+  IP_PNP_DHCP = yes;
+  IP_PNP = yes;
+  IRQSOFF_TRACER = yes;
+  JOLIET = yes;
+  LEGACY_TIOCSTI = yes;
+  LOGO_LINUX_CLUT224 = yes;
+  LOGO = yes;
+  MEDIA_HIDE_ANCILLARY_SUBDRV = yes;
+  MHP_DEFAULT_ONLINE_TYPE_OFFLINE = yes;
+  NFSD_LEGACY_CLIENT_TRACKING = yes;
+  NO_HZ_IDLE = yes;
+
     };
 
     configfile = "${sky1Patches}/config/config.sky1-latest";
