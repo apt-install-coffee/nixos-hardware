@@ -42,6 +42,7 @@ let
       NVMEM_SKY1 = yes;
       PWM_SKY1 = yes;
       SKY1_GPT_TIMER = yes;
+      USB_CDNS_SUPPORT = yes;
       USB_CDNSP_SKY1 = yes;
       USB_CDNSP = yes;
       PCI_SKY1 = yes;
