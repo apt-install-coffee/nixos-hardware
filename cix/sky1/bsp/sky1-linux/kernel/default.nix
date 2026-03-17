@@ -39,6 +39,11 @@ let
     structuredExtraConfig = with lib.kernel; {
       RUST_FW_LOADER_ABSTRACTIONS = yes;
       CIX_CPU_IPA = yes;
+      NVMEM_SKY1 = yes;
+      PWM_SKY1 = yes;
+      SKY1_GPT_TIMER = yes;
+      USB_CDNSP_SKY1 = yes;
+      USB_CDNSP = yes;
       PCI_SKY1 = yes;
       PINCTRL_SKY1_BASE = yes;
       PINCTRL_SKY1 = yes;
