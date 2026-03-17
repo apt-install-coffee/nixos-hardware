@@ -66,6 +66,7 @@ let
       TYPEC = yes;
       GPIO_CADENCE = yes;
       SKY1_WATCHDOG = yes;
+      MMC = yes;
       MMC_BLOCK = yes;
       OPTEE = yes;
       POWER_SEQUENCING = yes;
