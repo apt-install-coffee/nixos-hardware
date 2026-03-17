@@ -36,9 +36,25 @@ let
     };
 
     kernelPatches = patchList (lib.filesystem.listFilesRecursive "${sky1Patches}/patches-latest");
-    structuredExtraConfig = {
-      RUST_FW_LOADER_ABSTRACTIONS = lib.kernel.yes;
-      CIX_CPU_IPA = lib.kernel.yes;
+    structuredExtraConfig = with lib.kernel; {
+      RUST_FW_LOADER_ABSTRACTIONS = yes;
+      CIX_CPU_IPA = yes;
+      PCI_SKY1 = yes;
+      PINCTRL_SKY1_BASE = yes;
+      PINCTRL_SKY1 = yes;
+      HWSPINLOCK_SKY1 = yes;
+      USB_CDNSP_HOST = yes;  
+      PHY_CIX_USB2 = yes;
+      PHY_CIX_USB3 = yes;
+      PHY_CIX_USBDP = yes;
+      PHY_CIX_PCIE = yes;
+      ARMCHINA_NPU_ARCH_V3 = yes;
+      ARMCHINA_NPU_SOC_SKY1 = yes;
+      DMABUF_HEAPS_CMA_LEGACY = yes;
+      DMABUF_HEAPS_CMA = yes;
+      DMABUF_HEAPS_DSP = mes;
+      DMABUF_HEAPS_SYSTEM = yes;
+      DMABUF_HEAPS = yes;
     };
 
     configfile = "${sky1Patches}/config/config.sky1-latest";
