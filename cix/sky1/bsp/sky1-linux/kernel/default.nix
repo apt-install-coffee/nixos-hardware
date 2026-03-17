@@ -58,7 +58,7 @@ let
     };
 
     configfile = "${sky1Patches}/config/config.sky1-latest";
-    autoModules = false;
+    preferBuiltin = true;
 
     isLTS = false;
 
