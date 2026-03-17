@@ -55,6 +55,8 @@ let
       DMABUF_HEAPS_DSP = yes;
       DMABUF_HEAPS_SYSTEM = yes;
       DMABUF_HEAPS = yes;
+
+      TYPEC = yes;
     };
 
     configfile = "${sky1Patches}/config/config.sky1-latest";
