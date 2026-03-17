@@ -64,6 +64,7 @@ let
       NVME_CORE = yes;
       BLK_DEV_NVME = yes;
       TYPEC = yes;
+      GPIO_CADENCE = yes;
     };
 
     configfile = "${sky1Patches}/config/config.sky1-latest";
