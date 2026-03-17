@@ -69,7 +69,6 @@ let
   BIG_KEYS = yes;
   BOOTPARAM_HARDLOCKUP_PANIC = yes;
   CC_CAN_LINK = yes;
-  DEBUG_INFO_REDUCED = yes;
   DEFAULT_SECURITY_DAC = yes;
   EXT4_USE_FOR_EXT2 = yes;
   IP_PNP_BOOTP = yes;
