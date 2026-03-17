@@ -52,7 +52,7 @@ let
       ARMCHINA_NPU_SOC_SKY1 = yes;
       DMABUF_HEAPS_CMA_LEGACY = yes;
       DMABUF_HEAPS_CMA = yes;
-      DMABUF_HEAPS_DSP = mes;
+      DMABUF_HEAPS_DSP = yes;
       DMABUF_HEAPS_SYSTEM = yes;
       DMABUF_HEAPS = yes;
     };
