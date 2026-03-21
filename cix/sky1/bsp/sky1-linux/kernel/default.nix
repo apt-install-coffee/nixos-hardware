@@ -53,7 +53,7 @@ let
       PHY_CIX_USB2 = yes;
       PHY_CIX_USB3 = yes;
       PHY_CIX_USBDP = yes;
-      PHY_CIX_PCIE = yes;
+      PHY_CIX_PCIE = no;
       ARMCHINA_NPU_ARCH_V3 = yes;
       ARMCHINA_NPU_SOC_SKY1 = yes;
       DMABUF_HEAPS_CMA_LEGACY = yes;
