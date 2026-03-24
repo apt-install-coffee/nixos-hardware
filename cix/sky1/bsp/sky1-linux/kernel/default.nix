@@ -74,7 +74,6 @@ let
       VFIO = yes;
       GRACE_PERIOD = yes;
       IOMMUFD = yes;
-      SCSI_MPT3SAS = yes;
       USB_CDNSP_PCI = yes;
       PCI_DYNAMIC_OF_NODES = yes;
       STANDALONE = yes;
