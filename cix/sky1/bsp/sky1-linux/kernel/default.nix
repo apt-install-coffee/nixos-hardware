@@ -77,6 +77,7 @@ let
       USB_CDNSP_PCI = yes;
       PCI_DYNAMIC_OF_NODES = yes;
       APPLE_PMGR_PWRSTATE = yes;
+      ACPI_PCI_SLOT = yes;
     };
 
     configfile = "${sky1Patches}/config/config.sky1-latest";
