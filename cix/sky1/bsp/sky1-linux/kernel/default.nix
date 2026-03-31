@@ -45,7 +45,7 @@ let
       USB_CDNS_SUPPORT = yes;
       USB_CDNSP_SKY1 = yes;
       USB_CDNSP = yes;
-      PCI_SKY1 = yes;
+      PCI_SKY1 = no;
       PINCTRL_SKY1_BASE = yes;
       PINCTRL_SKY1 = yes;
       HWSPINLOCK_SKY1 = yes;
