@@ -39,13 +39,14 @@ let
     structuredExtraConfig = with lib.kernel; {
       RUST_FW_LOADER_ABSTRACTIONS = yes;
       CIX_CPU_IPA = yes;
-      NVMEM_SKY1 = yes;
+      /*NVMEM_SKY1 = yes;
       PWM_SKY1 = yes;
       SKY1_GPT_TIMER = yes;
       USB_CDNS_SUPPORT = yes;
       USB_CDNSP_SKY1 = yes;
       USB_CDNSP = yes;
-      PCI_SKY1 = no;
+      PCI_SKY1 = yes;
+      
       PINCTRL_SKY1_BASE = yes;
       PINCTRL_SKY1 = yes;
       HWSPINLOCK_SKY1 = yes;
@@ -77,11 +78,12 @@ let
       USB_CDNSP_PCI = yes;
       PCI_DYNAMIC_OF_NODES = yes;
       APPLE_PMGR_PWRSTATE = yes;
-      ACPI_PCI_SLOT = yes;
+      ACPI_PCI_SLOT = yes;*/
     };
 
     configfile = "${sky1Patches}/config/config.sky1-latest";
     preferBuiltin = true;
+    autoModules = false;
 
     isLTS = false;
 
