@@ -96,7 +96,7 @@ let
 
     configfile = "${sky1Patches}/config/config.sky1-latest";
     preferBuiltin = true;
-    enableCommonConfig = false;
+    # enableCommonConfig = false;
     withRust = true;
 
     isLTS = false;
