@@ -47,42 +47,9 @@ let
       USB_CDNSP_SKY1 = yes;
       USB_CDNSP = yes;
 
-      PINCTRL_SKY1_BASE = yes;
-      PINCTRL_SKY1 = yes;
-      HWSPINLOCK_SKY1 = yes;
-      USB_CDNSP_HOST = yes;  
-      PHY_CIX_USB2 = yes;
-      PHY_CIX_USB3 = yes;
-      PHY_CIX_USBDP = yes;
-      PHY_CIX_PCIE = yes;
-      ARMCHINA_NPU_ARCH_V3 = yes;
-      ARMCHINA_NPU_SOC_SKY1 = yes;
-      DMABUF_HEAPS_CMA_LEGACY = yes;
-      DMABUF_HEAPS_CMA = yes;
-      DMABUF_HEAPS_DSP = yes;
-      DMABUF_HEAPS_SYSTEM = yes;
-      DMABUF_HEAPS = yes;
-      NVME_CORE = yes;
-      BLK_DEV_NVME = yes;
-      TYPEC = yes;
-      GPIO_CADENCE = yes;
-      SKY1_WATCHDOG = yes;
-      RPMB = yes;
-      MMC_BLOCK = yes;
-      OPTEE = yes;
-      POWER_SEQUENCING = yes;
-      USB_CDNS3 = yes;
-      VFIO = yes;
-      GRACE_PERIOD = yes;
-      IOMMUFD = yes;
-      USB_CDNSP_PCI = yes;
-      PCI_DYNAMIC_OF_NODES = yes;
-      ACPI_PCI_SLOT = no;
+      #PCIE_CADENCE = no;
+      #PCI_SKY1 = no;
 
-      PCIE_CADENCE = no;
-      PCI_SKY1 = no;
-
-      # XFS_FS = yes;
       CRYPTO_AEGIS128_SIMD = lib.mkForce yes;
       CRYPTO_CHACHA20POLY1305 = yes;
       CRYPTO_BLOWFISH = yes;
@@ -96,7 +63,6 @@ let
 
     configfile = "${sky1Patches}/config/config.sky1-latest";
     preferBuiltin = true;
-    # enableCommonConfig = false;
     withRust = true;
 
     isLTS = false;
