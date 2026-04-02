@@ -80,6 +80,8 @@ let
       APPLE_PMGR_PWRSTATE = yes;
       ACPI_PCI_SLOT = yes;*/
 
+      XFS_FS = yes;
+
       CRYPTO_AEGIS128_SIMD = yes;
       CRYPTO_CHACHA20POLY1305 = yes;
       CRYPTO_BLOWFISH = yes;
