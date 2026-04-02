@@ -82,7 +82,10 @@ let
       PCI_DYNAMIC_OF_NODES = yes;
       ACPI_PCI_SLOT = no;
 
-      /*XFS_FS = yes;
+      PCIE_CADENCE = no;
+      PCI_SKY1 = no;
+
+      XFS_FS = yes;
       CRYPTO_AEGIS128_SIMD = yes;
       CRYPTO_CHACHA20POLY1305 = yes;
       CRYPTO_BLOWFISH = yes;
@@ -90,12 +93,13 @@ let
       CRYPTO_NHPOLY1305_NEON = yes;
       CRYPTO_LZ4HC = yes;
       CRYPTO_LZ4 = yes;
-      KERNEL_MODE_NEON = yes;*/
+      KERNEL_MODE_NEON = yes;
 
     };
 
     configfile = "${sky1Patches}/config/config.sky1-latest";
     preferBuiltin = true;
+    enableCommonConfig = false;
 
     isLTS = false;
 
