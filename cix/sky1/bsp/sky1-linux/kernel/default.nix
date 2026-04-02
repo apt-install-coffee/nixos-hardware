@@ -85,6 +85,8 @@ let
       CRYPTO_BLOWFISH = yes;
       CRYPTO_CRC32 = yes;
       CRYPTO_NHPOLY1305_NEON = yes;
+      CRYPTO_LZ4HC = yes;
+      CRYPTO_LZ4 = yes;
       KERNEL_MODE_NEON = yes;
     };
 
