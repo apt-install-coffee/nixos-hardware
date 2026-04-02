@@ -82,7 +82,7 @@ let
       PCIE_CADENCE = no;
       PCI_SKY1 = no;
 
-      XFS_FS = yes;
+      # XFS_FS = yes;
       CRYPTO_AEGIS128_SIMD = lib.mkForce yes;
       CRYPTO_CHACHA20POLY1305 = yes;
       CRYPTO_BLOWFISH = yes;
