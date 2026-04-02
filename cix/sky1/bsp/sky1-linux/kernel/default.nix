@@ -79,6 +79,13 @@ let
       PCI_DYNAMIC_OF_NODES = yes;
       APPLE_PMGR_PWRSTATE = yes;
       ACPI_PCI_SLOT = yes;*/
+
+      CRYPTO_AEGIS128_SIMD = yes;
+      CRYPTO_CHACHA20POLY1305 = yes;
+      CRYPTO_BLOWFISH = yes;
+      CRYPTO_CRC32 = yes;
+      CRYPTO_NHPOLY1305_NEON = yes;
+      KERNEL_MODE_NEON = yes;
     };
 
     configfile = "${sky1Patches}/config/config.sky1-latest";
