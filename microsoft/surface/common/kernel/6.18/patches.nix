@@ -10,7 +10,6 @@
     name = "microsoft-surface-patches-linux-${version}";
     patch = null;
     structuredExtraConfig = with kernel; {
-      STAGING_MEDIA = yes;
       ##
       ## Surface Aggregator Module
       ##
@@ -50,6 +49,8 @@
       ##
       CONFIG_HID_IPTS = module;
       CONFIG_HID_ITHC = module;
+      CONFIG_INTEL_THC_HID = module;
+      CONFIG_INTEL_QUICKSPI = module;
 
       ##
       ## Cameras: IPU3
@@ -94,6 +95,7 @@
       CONFIG_SURFACE_PRO3_BUTTON = module;
       CONFIG_SURFACE_GPE = module;
       CONFIG_SURFACE_BOOK1_DGPU_SWITCH = module;
+      CONFIG_HID_SURFACE = module;
     };
   }
   {
@@ -155,5 +157,13 @@
   {
     name = "ms-surface/0015-rtc";
     patch = patchSrc + "/0015-rtc.patch";
+  }
+  {
+    name = "ms-surface/0016-hid-surface";
+    patch = patchSrc + "/0016-hid-surface.patch";
+  }
+  {
+    name = "ms-surface/0017-powercap";
+    patch = patchSrc + "/0017-powercap.patch";
   }
 ]

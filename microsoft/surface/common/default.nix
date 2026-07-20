@@ -6,6 +6,10 @@
 }:
 
 let
+  inherit (builtins)
+    attrNames
+    ;
+
   inherit (lib)
     mkDefault
     mkOption
@@ -13,31 +17,29 @@ let
     versions
     ;
 
-  # Set the version and hash for the kernel sources
-  srcVersion =
-    with config.hardware.microsoft-surface;
-    if kernelVersion == "longterm" then
-      "6.12.19"
-    else if kernelVersion == "stable" then
-      "6.15.9"
-    else
-      abort "Invalid kernel version: ${kernelVersion}";
+  supportedKernels =
+    let
+      lts-kernel = {
+        version = "6.18.13";
+        hash = "sha256-7Sw8Vf045oNsCU/ONW8lZ/lRYTC3M1SimFeWA2jFaH8=";
+      };
 
-  srcHash =
-    with config.hardware.microsoft-surface;
-    if kernelVersion == "longterm" then
-      "sha256-1zvwV77ARDSxadG2FkGTb30Ml865I6KB8y413U3MZTE="
-    else if kernelVersion == "stable" then
-      "sha256-6U86+FSSMC96gZRBRY+AvKCtmRLlpMg8aZ/zxjxSlX0="
-    else
-      abort "Invalid kernel version: ${kernelVersion}";
+    in
+    {
+      "longterm" = lts-kernel;
+      "stable" = lts-kernel;
+    };
+
+  # Set the version and hash for the kernel sources
+  srcVersion = supportedKernels.${config.hardware.microsoft-surface.kernelVersion}.version;
+  srcHash = supportedKernels.${config.hardware.microsoft-surface.kernelVersion}.hash;
 
   # Fetch the latest linux-surface patches
   linux-surface = pkgs.fetchFromGitHub {
     owner = "linux-surface";
     repo = "linux-surface";
-    rev = "50d0ed6be462a5fdb643cfe8469bf69158afae42";
-    hash = "sha256-VEoZH3dFsLn9GnUyjnbOoJeTRM3KEQ9fhlMk03NXoXs=";
+    rev = "829ceccd5970ed3621a30d9fcfb2fe6584a3aab7";
+    hash = "sha256-H/qjP2dR5yjUvHUhI6pis+EHHSRXxc4+c4zir/pDA54=";
   };
 
   # Fetch and build the kernel
@@ -48,7 +50,7 @@ let
   kernelPatches = surfacePatches {
     version = srcVersion;
     patchFn = ./kernel/${versions.majorMinor srcVersion}/patches.nix;
-    patchSrc = (linux-surface + "/patches/${versions.majorMinor srcVersion}");
+    patchSrc = linux-surface + "/patches/${versions.majorMinor srcVersion}";
   };
   kernelPackages = linuxPackage {
     inherit kernelPatches;
@@ -61,10 +63,7 @@ in
 {
   options.hardware.microsoft-surface.kernelVersion = mkOption {
     description = "Kernel Version to use (patched for MS Surface)";
-    type = types.enum [
-      "longterm"
-      "stable"
-    ];
+    type = types.enum (attrNames supportedKernels);
     default = "longterm";
   };
 
