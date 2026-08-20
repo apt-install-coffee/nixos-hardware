@@ -6,7 +6,7 @@
 }@args:
 
 let
-  kver = "6.19.4";
+  kver = "7.2";
 
   kPatch = (
     f: {
@@ -20,8 +20,9 @@ let
   sky1Patches = fetchFromGitHub {
     owner = "Sky1-Linux";
     repo = "linux-sky1";
-    rev = "57e018a398248d7e5e4d798610df79a557c0629f";
-    hash = "sha256-cPQdu9pTNsn3gAcX5kr8VxxLMorD8FQoDFu7t63Zo2A=";
+    # branch: sky1-7.2 (rebased onto Linux v7.2)
+    rev = "2766477b627081772d2131462801733d5da37921";
+    hash = "sha256-fkp2wGglwncBpAfkjZT4Z9XPH6x2oGmd1aiBil8dux0=";
   };
 
   args' = {
@@ -32,7 +33,7 @@ let
       owner = "gregkh";
       repo = "linux";
       tag = "v${kver}";
-      hash = "sha256-8Z3qxIUJAme3vY8KTmgZ5fZkqHytW6HVTx6pqGJsmRo=";
+      hash = "sha256-GAjLGXXJiU42En31XWWx31IRT63G2pNsDN4ifNGtHis=";
     };
 
     kernelPatches = patchList (lib.filesystem.listFilesRecursive "${sky1Patches}/patches-latest");
@@ -46,9 +47,6 @@ let
       USB_CDNS_SUPPORT = yes;
       USB_CDNSP_SKY1 = yes;
       USB_CDNSP = yes;
-
-      #PCIE_CADENCE = no;
-      #PCI_SKY1 = no;
 
       CRYPTO_AEGIS128_SIMD = lib.mkForce yes;
       CRYPTO_CHACHA20POLY1305 = yes;
