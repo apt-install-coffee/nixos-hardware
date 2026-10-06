@@ -22,8 +22,8 @@ let
   sky1Patches = fetchFromGitHub {
     owner = "apt-install-coffee";
     repo = "linux-sky1";
-    rev = "eb477508ad02d26a65b2f1bfbb5007a895a3e83e";
-    hash = "sha256-eAmocvELCOF5zx/ysFBPfkCzK8ZA3Uv5f1reRC+V1sU=";
+    rev = "530ef7b4f68d57cf6bda3f248c92ace0884c7aff";
+    hash = "sha256-Qlleq1D0sbfpVnVjDGGQLbZivGc7sbuz8qvfTbp7hMo=";
   };
 
   args' = {
