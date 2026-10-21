@@ -41,6 +41,7 @@ let
     structuredExtraConfig = with lib.kernel; {
       RUST_FW_LOADER_ABSTRACTIONS = yes;
       CIX_CPU_IPA = yes;
+      ARMCHINA_NPU = yes;
 
       # The giant discrete-GPU drivers are irrelevant to the CIX Sky1
       # (Mali/panthor) SoC. Keeping them off also keeps debug-info out of the
