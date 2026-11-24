@@ -22,8 +22,8 @@ let
   sky1Patches = fetchFromGitHub {
     owner = "apt-install-coffee";
     repo = "linux-sky1";
-    rev = "530ef7b4f68d57cf6bda3f248c92ace0884c7aff";
-    hash = "sha256-Qlleq1D0sbfpVnVjDGGQLbZivGc7sbuz8qvfTbp7hMo=";
+    rev = "3316442dbbf0ab08a0b9b84350c35b442fbe3a76";
+    hash = "sha256-n7hgS4J6JbBk8C+f166FqMtEfGhd0zJ9Dgyb9bRwNEE=";
   };
 
   args' = {
@@ -41,7 +41,12 @@ let
     structuredExtraConfig = with lib.kernel; {
       RUST_FW_LOADER_ABSTRACTIONS = yes;
       CIX_CPU_IPA = yes;
-      ARMCHINA_NPU = yes;
+      # The BSP config ships ARMCHINA_NPU=m.  Keep the core a module and
+      # explicitly select the Zhouyi V3 + Sky1 backends; without both the
+      # driver has no hardware ops and /dev/aipu never appears.
+      ARMCHINA_NPU = module;
+      ARMCHINA_NPU_ARCH_V3 = yes;
+      ARMCHINA_NPU_SOC_SKY1 = yes;
 
       # The giant discrete-GPU drivers are irrelevant to the CIX Sky1
       # (Mali/panthor) SoC. Keeping them off also keeps debug-info out of the
